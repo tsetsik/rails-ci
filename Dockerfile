@@ -2,7 +2,7 @@ FROM ruby:2.5
 MAINTAINER Tsvetomir Demerdzhiev
 
 # Initial setup
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs unzip xinetd telnetd
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs unzip xinetd telnetd wget
 
 # Install Chrome
 RUN \
