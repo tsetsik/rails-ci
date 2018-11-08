@@ -10,7 +10,8 @@ RUN \
   echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
   apt-get update -yqqq && \
   apt-get install -y google-chrome-stable > /dev/null 2>&1 && \
-  sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
+  sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome; \
+  rm -rf /var/lib/apt/lists/*
 
 # Install chromedriver
 RUN \
@@ -24,6 +25,7 @@ RUN \
   wget -q -O - https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
   apt-get update -yq && \
-  apt-get install -y yarn
+  apt-get install -y yarn; \
+  rm -rf /var/lib/apt/lists/*
 
 EXPOSE 80
